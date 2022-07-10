@@ -16,6 +16,16 @@ import VueI18n from '@intlify/vite-plugin-vue-i18n'
 // https://github.com/antfu/unplugin-icons
 // for our icons
 
+function removeDataTestAttrs(node: any) {
+  if (node.type === 1 /* NodeTypes.ELEMENT */) {
+    node.props = node.props.filter((prop: any) =>
+      prop.type === 6 /* NodeTypes.ATTRIBUTE */
+        ? prop.name !== 'data-testid'
+        : true
+    )
+  }
+}
+
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => ({
   resolve:{
@@ -31,6 +41,11 @@ export default defineConfig(({ command }) => ({
     Vue({
       include: [/\.vue$/, /\.md$/],
       reactivityTransform: true,
+      template: {
+        compilerOptions: {
+          nodeTransforms: process.env.MODE === 'production' ? [removeDataTestAttrs] : [],
+        }
+      }
     }),
     Pages({
       extensions: ['vue', 'md'],

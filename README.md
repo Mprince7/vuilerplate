@@ -142,7 +142,6 @@ docker run --rm -it -p 3000:80 alibaba:latest
 - [ ] [autoprefixer](https://github.com/postcss/autoprefixer)
 - [ ] remove hover on mobile
 - [ ] remove desktop `@media` on mobile build
-- [ ] remove `data-testid` on production
 - [ ] analyze `web-vital` and track them
 - [ ] improve `PWA` features
 - [ ] improve `PostCSS` plugins

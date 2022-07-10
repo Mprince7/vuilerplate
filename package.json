@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.3",
   "scripts": {
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vue-tsc --noEmit && MODE=production vite build",
     "coverage": "vitest run --coverage",
     "dev": "vite",
     "lint:js": "eslint . --ext .js,.ts,.vue",
